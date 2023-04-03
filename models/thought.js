@@ -3,9 +3,11 @@ const { Schema, model } = require('mongoose');
 // Schema to create a thought model
 const thoughtSchema = new Schema(
   {
-    thoughtName: {
+    thoughtText: {
       type: String,
       required: true,
+      minlength: 1,
+      maxlength: 280,
     },
     username: {
       type: String,
@@ -14,6 +16,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now(),
+      get: createdAtDate => moment(createdAtDate).format('MMM DD, YYYY [at] hh:mm a')
     },
     reactions: [
       {
