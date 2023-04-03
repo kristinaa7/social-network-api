@@ -39,24 +39,22 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No such user exists' })
-          : Thought.findOneAndUpdate(
-              { users: req.params.userId },
-              { $pull: { students: req.params.userId } },
-              { new: true }
+          : Thought.deleteMany(
+           {
+            _id: {$in: user.thoughts},
+           }
             )
       )
-      .then((thought) =>
-        !thought
-          ? res.status(404).json({
-              message: 'User deleted',
-            })
-          : res.json({ message: 'User successfully deleted' })
+      .then(() =>
+          res.json({ message: 'User successfully deleted' })
       )
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
       });
   },
+
+  //Update user - WORK
 
   // Add an friend to friend list
   addFriend(req, res) {
