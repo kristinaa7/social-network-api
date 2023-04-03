@@ -33,6 +33,7 @@ const thoughtSchema = new Schema(
   }
 );
 
-const Thought = model('thought', thoughtSchema);
+//Initialize our post model
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;
