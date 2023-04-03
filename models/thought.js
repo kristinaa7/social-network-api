@@ -1,6 +1,35 @@
 const { Schema, model } = require('mongoose');
 const moment = require('moment')
 
+const reactionSchema = new Schema(
+    {
+      reactionId: {
+        type: Schema.Types.ObjectId,
+        default: ()=> new Types.ObjectId(),
+      },
+      reactionBody: {
+        type: String,
+        required: true,
+        maxlength: 280,
+      },
+      username: {
+      type: String,
+      required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now(),
+        get: createdAtDate => moment(createdAtDate).format('MMM DD, YYYY [at] hh:mm a')
+      },
+    },
+    {
+      toJSON: {
+        virtuals: true,
+      },
+      id: false,
+    }
+  );
+
 // Schema to create a thought model
 const thoughtSchema = new Schema(
   {
@@ -19,12 +48,7 @@ const thoughtSchema = new Schema(
       default: Date.now(),
       get: createdAtDate => moment(createdAtDate).format('MMM DD, YYYY [at] hh:mm a')
     },
-    reactions: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'reactions',
-      },
-    ],
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
