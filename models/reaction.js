@@ -31,6 +31,6 @@ const reactionSchema = new Schema(
   );
 
 //Initialize our post model
-const Reaction = model('Reaction', reactionSchema);
+// const Reaction = ('Reaction', reactionSchema);
 
-module.exports = Reaction
+module.exports = reactionSchema;
