@@ -30,11 +30,13 @@ In the intergated terminal, run the command
 `npm run start`
 
 ### Walkthrough Video Link
+https://drive.google.com/file/d/1CbsBrFW58dtgsAEoOI40sXctGxm47kiC/view 
 
 ## Credits
 * Mongoose link https://www.npmjs.com/package/mongoose
 * Express link https://expressjs.com/
 * Fullstack Bootcamp Tutoring
+* Fullstack TAs
 
 
 
